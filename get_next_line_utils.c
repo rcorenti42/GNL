@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/13 15:26:32 by rcorenti          #+#    #+#             */
+/*   Updated: 2020/01/18 18:13:59 by rcorenti         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "get_next_line.h"
 
 void		*ft_memset(void *s, int c, size_t n)
@@ -28,7 +40,7 @@ static void	*ft_memcpy(void *dest, const void *src, size_t n)
 	size_t	i;
 
 	i = 0;
-	if (dest == NULL && src == NULL)
+	if (!dest && !src)
 		return (NULL);
 	while (i < n)
 	{
@@ -43,13 +55,13 @@ char		*ft_strndup(const char *s, size_t size)
 	char	*str;
 	size_t	i;
 
-	if (s == NULL)
+	if (!s)
 		return (NULL);
 	i = ft_strlen(s);
 	if (size > i)
 		size = i;
 	str = (char *)malloc(sizeof(char) * (size + 1));
-	if (str != NULL)
+	if (str)
 	{
 		ft_memcpy(str, s, size);
 		str[size] = '\0';
@@ -62,11 +74,11 @@ char		*ft_strjoin(char **s1, char **s2, int i)
 	char	*str;
 	size_t	len;
 
-	if (*s1 != NULL && *s2 != NULL)
+	if (*s1 && *s2)
 	{
 		len = ft_strlen(*s1) + ft_strlen(*s2);
 		str = (char *)malloc(sizeof(char) * (len + 1));
-		if (str != NULL)
+		if (str)
 		{
 			ft_memcpy(str, *s1, ft_strlen(*s1));
 			ft_memcpy(str + ft_strlen(*s1), *s2, ft_strlen(*s2));
@@ -74,8 +86,7 @@ char		*ft_strjoin(char **s1, char **s2, int i)
 		}
 	}
 	else
-		str = *s1 == NULL ? ft_strndup(*s2, ft_strlen(*s2)) :
-			ft_strndup(*s1, ft_strlen(*s1));
+		str = !*s1 ? ft_strndup(*s2, ft_strlen(*s2)) : ft_strndup(*s1, ft_strlen(*s1));
 	free(*s1);
 	*s1 = NULL;
 	if (i == 2)
