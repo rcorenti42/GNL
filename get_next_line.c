@@ -6,15 +6,15 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:25:40 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/18 18:25:53 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/18 21:50:02 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-static size_t	get_newline(char *str)
+static int		get_newline(char *str)
 {
-	size_t	i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -31,7 +31,7 @@ static size_t	get_newline(char *str)
 static int		get_line(char **ptr, char **line)
 {
 	char	*tmp;
-	size_t	size;
+	int		size;
 	int		result;
 
 	result = 0;

@@ -6,7 +6,7 @@
 /*   By: rcorenti <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:26:32 by rcorenti          #+#    #+#             */
-/*   Updated: 2020/01/18 18:13:59 by rcorenti         ###   ########.fr       */
+/*   Updated: 2020/01/18 19:17:22 by rcorenti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ char		*ft_strjoin(char **s1, char **s2, int i)
 		}
 	}
 	else
-		str = !*s1 ? ft_strndup(*s2, ft_strlen(*s2)) : ft_strndup(*s1, ft_strlen(*s1));
+		str = *s1 ? ft_strndup(*s1, ft_strlen(*s1)) : ft_strndup(*s2, ft_strlen(*s2));
 	free(*s1);
 	*s1 = NULL;
 	if (i == 2)

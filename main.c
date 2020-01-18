@@ -10,25 +10,22 @@ void	ft_memdel(void **ap)
 	}
 }
 
-void	ft_strdel(char **as)
-{
-	ft_memdel((void **)as);
-}
-
-int		main(int ac, char **av)
+int		main(int argc, char **argv)
 {
 	int		fd;
 	int		ret_value;
 	char	*line;
 
 	line = NULL;
-	fd = open(av[1], O_RDONLY);
+	fd = open(argv[1], O_RDONLY);
 	ret_value = 1;
+	if (!argc)
+		return(0);
 	while (ret_value == 1)
 	{
 		ret_value = get_next_line(fd, &line);
 		printf("%d |>>| %s\n", ret_value, line);
-		ft_strdel(&line);
+		ft_memdel((void **)&line);
 	}
 	close(fd);
 	return (0);
